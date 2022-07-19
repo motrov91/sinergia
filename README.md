@@ -1,0 +1,2 @@
+# sinergia
+emotional intelligence app
