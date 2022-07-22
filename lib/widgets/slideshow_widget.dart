@@ -9,6 +9,7 @@ import 'package:sinergia_app/screens/screens.dart';
 /// creación de un PageView para la visualización de un titutial por medio
 /// de un Slideshow, la clase Slideshow recibe una lista de tipo Slide en
 /// la cual se le pasa un widget(Imagen vectorial) y un String.
+/// el slideshow trabaja con provider
 
 class Slideshow extends StatelessWidget {
   final List<Slide> slides;
@@ -84,6 +85,8 @@ class _StructureSlideShow extends StatelessWidget {
 ///estado de un pageView se crea el controller y con la propiedad
 ///addListener se escucha los cambios en el pageView y el controller.page
 ///nos indica en que pagina se encuenta actualmete.
+///_Slides recibe una lista de tipo slide la recorre a traves de un map
+///y pinta la informacion contenida en esa lista.
 
 class _Slides extends StatefulWidget {
   final List<Slide> slides;
@@ -140,7 +143,8 @@ class _SlidesState extends State<_Slides> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: ((context) => HomeScreen())));
+                                builder: ((context) =>
+                                    OptionsSessionScreen())));
                       },
                       child: const Text(
                         'OMITIR',
@@ -185,7 +189,7 @@ class _SlidesState extends State<_Slides> {
   }
 }
 
-/// recibe un elemento de la lista de tipo Slide para posteriormente pintarlo
+/// Recibe un elemento de la lista de tipo Slide para posteriormente pintarlo
 class _Slide extends StatelessWidget {
   final Slide slide;
 
@@ -229,7 +233,10 @@ class _Slide extends StatelessWidget {
 }
 
 ///El widget _Dots recibe un entero llamado points el cual es el
-///indice del pageView.
+///indice del pageView, en el children del Row() se genera una lista con
+///la cantidad de puntos points indica la cantidad de puntos que quiere pintar
+///luego por medio de una funcion genera la cantidad de veces indicada (points)
+///un widget, en nuestro caso _Dot().
 
 class _Dots extends StatelessWidget {
   final int points;

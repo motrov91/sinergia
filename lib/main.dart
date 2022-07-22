@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sinergia_app/provider/slideshow_provider.dart';
-import 'package:sinergia_app/screens/introduction_screen.dart';
-import 'package:sinergia_app/widgets/widgets.dart';
+//import 'package:sinergia_app/screens/introduction_screen.dart';
+import 'package:sinergia_app/screens/screens.dart';
 
 void main() => runApp(MultiProvider(providers: [
       ChangeNotifierProvider<SlideshowProvider>(
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
         title: 'Sinergia App',
-        home: IntroductionScreen()
+        home: OptionsSessionScreen()
     );
   }
 }
