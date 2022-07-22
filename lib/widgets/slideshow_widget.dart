@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'package:provider/provider.dart';
+
 import 'package:sinergia_app/models/slide.dart';
+import 'package:sinergia_app/provider/slideshow_provider.dart';
+import 'package:sinergia_app/screens/screens.dart';
 
 /// creación de un PageView para la visualización de un titutial por medio
 /// de un Slideshow, la clase Slideshow recibe una lista de tipo Slide en
@@ -8,20 +12,33 @@ import 'package:sinergia_app/models/slide.dart';
 
 class Slideshow extends StatelessWidget {
   final List<Slide> slides;
+  final Color primaryColor;
+  final Color secondaryColor;
+  final double activeDot;
+  final double inactiveDot;
 
-  const Slideshow({
-    Key? key,
-    required this.slides,
-  }) : super(key: key);
+  const Slideshow(
+      {Key? key,
+      required this.slides,
+      this.primaryColor = Colors.blueGrey,
+      this.secondaryColor = Colors.grey,
+      this.activeDot = 20,
+      this.inactiveDot = 10})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Provider.of<SlideshowProvider>(context).primaryColor = primaryColor;
+    Provider.of<SlideshowProvider>(context).secondaryColor = secondaryColor;
+    Provider.of<SlideshowProvider>(context).sizeItemActive = activeDot;
+    Provider.of<SlideshowProvider>(context).sizeItemInactive = inactiveDot;
+
     return SafeArea(child: Builder(
       builder: (
         BuildContext context,
       ) {
         return _StructureSlideShow(
-          dotsPositionUp: false,
+          dotsPositionUp: true,
           slides: slides,
         );
       },
@@ -87,7 +104,8 @@ class _SlidesState extends State<_Slides> {
   void initState() {
     super.initState();
     controller.addListener(() {
-      print(controller.page);
+      Provider.of<SlideshowProvider>(context, listen: false).currentPage =
+          controller.page!;
     });
   }
 
@@ -99,12 +117,70 @@ class _SlidesState extends State<_Slides> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: PageView(
-        controller: controller,
-        scrollDirection: Axis.horizontal,
-        children: widget.slides.map((e) => _Slide(slide: e)).toList(),
-      ),
+    final current = Provider.of<SlideshowProvider>(context).currentPage;
+
+    return Column(
+      children: [
+        Expanded(
+          child: PageView(
+            physics: const BouncingScrollPhysics(),
+            controller: controller,
+            scrollDirection: Axis.horizontal,
+            children: widget.slides.map((e) => _Slide(slide: e)).toList(),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 30, right: 20),
+          child: (current <= 1.7)
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: ((context) => HomeScreen())));
+                      },
+                      child: const Text(
+                        'OMITIR',
+                        style: TextStyle(fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                    FloatingActionButton(
+                      backgroundColor: const Color(0xffFF9A34),
+                      elevation: 0,
+                      highlightElevation: 0,
+                      onPressed: () => controller.nextPage(
+                          duration: const Duration(milliseconds: 200),
+                          curve: Curves.decelerate),
+                      child: const Icon(Icons.chevron_right),
+                    )
+                  ],
+                )
+              : Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Spacer(),
+                      GestureDetector(
+                        onTap: () => {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HomeScreen()))
+                        },
+                        child: const Text(
+                          'COMENZAR',
+                          style: TextStyle(fontWeight: FontWeight.w600),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+        )
+      ],
     );
   }
 }
@@ -124,18 +200,26 @@ class _Slide extends StatelessWidget {
         padding: const EdgeInsets.only(bottom: 80),
         child: Stack(
           children: [
-            slide.widget,
+            Center(
+              child: Image(
+                image: AssetImage(slide.urlImage),
+              ),
+            ),
             Positioned(
               bottom: 0,
               right: 0,
               left: 0,
               child: Container(
                 height: 100,
+                margin: const EdgeInsets.symmetric(horizontal: 20),
                 alignment: Alignment.center,
                 child: Text(
+                  textAlign: TextAlign.center,
                   slide.textSlide,
                   style: const TextStyle(
-                      fontSize: 16, fontWeight: FontWeight.w500),
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: Color(0xff8130EA)),
                 ),
               ),
             )
@@ -175,13 +259,28 @@ class _Dot extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final currentPage = Provider.of<SlideshowProvider>(context).currentPage;
+    final primaryColor = Provider.of<SlideshowProvider>(context).primaryColor;
+    final secondaryColor =
+        Provider.of<SlideshowProvider>(context).secondaryColor;
+    final active = Provider.of<SlideshowProvider>(context).sizeItemActive;
+    final inactive = Provider.of<SlideshowProvider>(context).sizeItemInactive;
+
     return Center(
-      child: Container(
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
         margin: const EdgeInsets.symmetric(horizontal: 8),
-        width: 10,
-        height: 10,
-        decoration:
-            const BoxDecoration(color: Colors.red, shape: BoxShape.circle),
+        width: (currentPage >= index - 0.1 && currentPage < index + 0.1)
+            ? active
+            : inactive,
+        height: (currentPage >= index - 0.1 && currentPage < index + 0.1)
+            ? active
+            : inactive,
+        decoration: BoxDecoration(
+            color: (currentPage >= index - 0.1 && currentPage < index + 0.1)
+                ? primaryColor
+                : secondaryColor,
+            shape: BoxShape.circle),
       ),
     );
   }
