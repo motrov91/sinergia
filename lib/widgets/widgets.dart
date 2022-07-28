@@ -1,3 +1,4 @@
+export 'package:sinergia_app/widgets/bubbles.dart';
 export 'package:sinergia_app/widgets/custom_button_text.dart';
 export 'package:sinergia_app/widgets/custom_button.dart';
 export 'package:sinergia_app/widgets/custom_input_login.dart';
