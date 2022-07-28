@@ -66,16 +66,22 @@ class _StructureSlideShow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        if (dotsPositionUp) _Dots(points: slides.length),
-        Expanded(
-            child: _Slides(
-          slides: slides,
-        )),
-        /** Recibe _Slides la lista de slides */
-        if (!dotsPositionUp) _Dots(points: slides.length),
-      ],
+
+    double sizeH = MediaQuery.of(context).size.height;
+
+    return Container(
+      padding: (sizeH < 670) ? const EdgeInsets.only(bottom: 15) : null,
+      child: Column(
+        children: [
+          if (dotsPositionUp) _Dots(points: slides.length),
+          Expanded(
+              child: _Slides(
+            slides: slides,
+          )),
+          /** Recibe _Slides la lista de slides */
+          if (!dotsPositionUp) _Dots(points: slides.length),
+        ],
+      ),
     );
   }
 }
@@ -173,7 +179,7 @@ class _SlidesState extends State<_Slides> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => HomeScreen()))
+                                  builder: (context) => OptionsSessionScreen()))
                         },
                         child: const Text(
                           'COMENZAR',
@@ -248,7 +254,7 @@ class _Dots extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.infinity,
       height: 40,
       child: Row(

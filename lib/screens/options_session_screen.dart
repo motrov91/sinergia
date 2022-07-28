@@ -42,20 +42,26 @@ class OptionsSessionScreen extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(vertical: 20, horizontal: 5),
                 child: Column(
-                  children: const [
+                  children: [
                     CustomButton(
+                      press: () {
+                        Navigator.pushNamed(context, 'login');
+                      },
                       bgButton: true,
                       textButton: "Iniciar Sesion",
-                      colorTop: Color(0xffFFC488),
-                      colorBottom: Color(0xffFF9A34),
+                      colorTop: const Color(0xffFFC488),
+                      colorBottom: const Color(0xffFF9A34),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     CustomButton(
+                      press: () {
+                        Navigator.pushNamed(context, 'register');
+                      },
                       textButton: "Registrarme",
-                      colorTop: Color(0xffFFC488),
-                      colorBottom: Color(0xffFF9A34),
+                      colorTop: const Color(0xffFFC488),
+                      colorBottom: const Color(0xffFF9A34),
                     ),
                   ],
                 ),

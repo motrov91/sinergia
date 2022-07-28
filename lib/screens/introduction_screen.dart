@@ -15,8 +15,8 @@ class IntroductionScreen extends StatelessWidget {
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: <Color>[
-            Color(0xffB881DA).withOpacity(0.3),
-            Color(0xffFF9A34).withOpacity(0.4),
+            const Color(0xffB881DA).withOpacity(0.3),
+            const Color(0xffFF9A34).withOpacity(0.4),
           ])),
       child: Row(
         children: [
