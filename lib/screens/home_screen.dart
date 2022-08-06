@@ -7,12 +7,30 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        bottomNavigationBar: const CustomNavigarionBar(),
         body: Container(
             width: double.infinity,
             height: double.infinity,
-            color: Colors.blue,
+            color: Colors.white,
             child: Column(
-              children: [_HeaderHome()],
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _HeaderHome(),
+                const Padding(
+                  padding: EdgeInsets.only(
+                    top: 15,
+                    left: 30,
+                  ),
+                  child: Text(
+                    'Categorias',
+                    style: TextStyle(
+                        color: Color(0xff707070),
+                        fontWeight: FontWeight.w600,
+                        fontSize: 16),
+                  ),
+                ),
+                OptionsMenuHome()
+              ],
             )));
   }
 }
@@ -153,7 +171,7 @@ class _PersonalData extends StatelessWidget {
       padding: const EdgeInsets.only(left: 13, right: 25),
       height: 100,
       child: Padding(
-        padding: const EdgeInsets.only(top: 30),
+        padding: const EdgeInsets.only(top: 40),
         child: Row(
           children: [
             const CircleAvatar(
