@@ -13,6 +13,8 @@ void main() => runApp(MultiProvider(providers: [
           create: (_) => DatePickerProvider()),
       ChangeNotifierProvider<FormLoginProvider>(
           create: (_) => FormLoginProvider()),
+      ChangeNotifierProvider<MenuHomeProvider>(
+          create: (_) => MenuHomeProvider()),
     ], child: MyApp()));
 
 class MyApp extends StatelessWidget {

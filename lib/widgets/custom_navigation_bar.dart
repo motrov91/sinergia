@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:sinergia_app/provider/provider.dart';
 
 class CustomNavigarionBar extends StatelessWidget {
   const CustomNavigarionBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final current = Provider.of<MenuHomeProvider>(context);
     Size size = MediaQuery.of(context).size;
 
     return Container(
@@ -21,11 +24,12 @@ class CustomNavigarionBar extends StatelessWidget {
         ],
       ),
       child: BottomNavigationBar(
-          currentIndex: 0,
+          onTap: (i) => current.currentItem = i,
+          currentIndex: current.currentItem,
           elevation: 0,
           showSelectedLabels: false,
           showUnselectedLabels: false,
-          items: [
+          items: const [
             BottomNavigationBarItem(
                 backgroundColor: Colors.red,
                 activeIcon: _GradientIcon(

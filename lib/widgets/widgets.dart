@@ -1,3 +1,4 @@
+export 'package:sinergia_app/widgets/page_home.dart';
 export 'package:sinergia_app/widgets/bubbles.dart';
 export 'package:sinergia_app/widgets/options_menu_home.dart';
 export 'package:sinergia_app/widgets/custom_button_text.dart';
