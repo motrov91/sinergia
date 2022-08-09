@@ -13,7 +13,7 @@ class Carrousel extends StatelessWidget {
     final Size size = MediaQuery.of(context).size;
 
     return Container(
-      margin: const EdgeInsets.only(left: 10, right: 10, bottom: 30),
+      margin: const EdgeInsets.only(left: 10, right: 10),
       width: size.width,
       height: size.height * 0.23,
       child: Column(
@@ -166,11 +166,12 @@ class _promotion extends StatelessWidget {
           Container(
             margin: const EdgeInsets.all(10),
             alignment: Alignment.bottomLeft,
+            width: 220,
             height: double.infinity,
             child: Text(
               promo.textImage,
-              style: TextStyle(
-                  fontSize: 25,
+              style: const TextStyle(
+                  fontSize: 20,
                   color: Colors.purple,
                   fontWeight: FontWeight.w500),
             ),
