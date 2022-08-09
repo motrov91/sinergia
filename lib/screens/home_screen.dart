@@ -4,13 +4,16 @@ import 'package:sinergia_app/provider/provider.dart';
 import 'package:sinergia_app/screens/screens.dart';
 import 'package:sinergia_app/widgets/widgets.dart';
 
+/// El HomeScreen renderiza dos widgets PageHome y UserConfig, pagehome
+/// renderiza un pageview el cual muestra las dos pantallas, la pageHome y la
+// vista de usuario (user_config)
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        bottomNavigationBar: const CustomNavigarionBar(), body: _pages());
+    return const Scaffold(
+        bottomNavigationBar: CustomNavigarionBar(), body: _pages());
   }
 }
 
@@ -26,7 +29,7 @@ class _pages extends StatelessWidget {
     return PageView(
       controller: navigation.pageController,
       physics: const NeverScrollableScrollPhysics(),
-      children: [PageHome(), UserConfig()],
+      children: const [PageHome(), UserConfig()],
     );
   }
 }

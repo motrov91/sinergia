@@ -10,8 +10,6 @@ class PageHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        width: double.infinity,
-        height: double.infinity,
         color: Colors.white,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -19,7 +17,6 @@ class PageHome extends StatelessWidget {
             _HeaderHome(),
             Padding(
               padding: EdgeInsets.only(
-                top: 15,
                 left: 30,
               ),
               child: Text(
@@ -27,7 +24,7 @@ class PageHome extends StatelessWidget {
                 style: TextStyle(
                     color: Color(0xff707070),
                     fontWeight: FontWeight.w600,
-                    fontSize: 16),
+                    fontSize: 18),
               ),
             ),
             OptionsMenuHome()
@@ -45,28 +42,20 @@ class _HeaderHome extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    return Container(
+    return SizedBox(
       width: double.infinity,
-      height: size.height * 0.35,
-      color: Colors.white,
+      height: (size.height < 700) ? size.height * 0.45 : size.height * 0.40,
       child: Stack(
         children: [
-          _BackgroundHeader(),
-          _Bubbles(),
-          _PersonalData(),
-          Positioned(
-            bottom: 0,
-            right: 0,
-            left: 0,
-            child: Container(
-              margin: const EdgeInsets.only(left: 15, right: 15, bottom: 30),
-              width: size.width,
-              height: size.height * 0.18,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.cyanAccent),
-            ),
-          ),
+          const _BackgroundHeader(),
+          const _Bubbles(),
+          Column(
+            children: const [
+              _PersonalData(),
+              SizedBox(height: 10),
+              Carrousel(),
+            ],
+          )
         ],
       ),
     );

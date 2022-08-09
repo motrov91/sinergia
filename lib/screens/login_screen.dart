@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-import '../provider/provider.dart';
+import 'package:sinergia_app/screens/screens.dart';
 import 'package:sinergia_app/widgets/widgets.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -177,10 +175,12 @@ class _Form extends StatelessWidget {
             CustomButton(
               press: () {
                 print('formValues ${formValues}');
-                if (!myFormKey.currentState!.validate()) {
-                  print('formulario no valido');
-                  return;
-                }
+                // if (!myFormKey.currentState!.validate()) {
+                //   print('formulario no valido');
+                //   return;
+                // }
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => HomeScreen()));
               },
               textButton: "Ingresar",
               colorTop: const Color(0xffC69CFD),

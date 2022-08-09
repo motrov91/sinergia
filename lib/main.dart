@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:sinergia_app/provider/carrousel_provider.dart';
 
 import 'package:sinergia_app/provider/provider.dart';
 import 'package:sinergia_app/router/app_routes.dart';
@@ -15,6 +16,8 @@ void main() => runApp(MultiProvider(providers: [
           create: (_) => FormLoginProvider()),
       ChangeNotifierProvider<MenuHomeProvider>(
           create: (_) => MenuHomeProvider()),
+      ChangeNotifierProvider<CarrouselProvider>(
+          create: (_) => CarrouselProvider()),
     ], child: MyApp()));
 
 class MyApp extends StatelessWidget {

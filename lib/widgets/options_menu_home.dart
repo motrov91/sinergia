@@ -9,7 +9,7 @@ class OptionsMenuHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
+        margin: const EdgeInsets.symmetric(horizontal: 30),
         width: double.infinity,
         height: double.infinity,
         color: Colors.white,
@@ -17,7 +17,7 @@ class OptionsMenuHome extends StatelessWidget {
           children: [
             Expanded(
               child: Container(
-                padding: const EdgeInsets.only(top: 20, bottom: 12),
+                padding: const EdgeInsets.only(top: 10, bottom: 12),
                 height: double.infinity,
                 child: Column(
                   children: const [
@@ -42,7 +42,7 @@ class OptionsMenuHome extends StatelessWidget {
             ),
             Expanded(
               child: Container(
-                padding: const EdgeInsets.only(top: 20, bottom: 12),
+                padding: const EdgeInsets.only(top: 10, bottom: 12),
                 height: double.infinity,
                 child: Column(
                   children: const [
@@ -124,7 +124,7 @@ class _ButtonBox extends StatelessWidget {
                     style: const TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
-                      fontSize: 16,
+                      fontSize: 14,
                       letterSpacing: 1,
                     ),
                   ),
