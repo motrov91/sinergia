@@ -1,3 +1,7 @@
+export 'package:sinergia_app/screens/charlas_screen.dart';
+export 'package:sinergia_app/screens/habla_con_emi.dart';
+export 'package:sinergia_app/screens/inteligencia_emocional_screen.dart';
+export 'package:sinergia_app/screens/para_ti.dart';
 export 'package:sinergia_app/screens/user_config.dart';
 export 'package:sinergia_app/screens/home_screen.dart';
 export 'package:sinergia_app/screens/introduction_screen.dart';

@@ -147,37 +147,35 @@ class _promotion extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: promo.url,
-      child: Container(
-        child: Stack(children: [
-          SizedBox(
-            width: double.infinity,
-            height: double.infinity,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(23),
-              child: FadeInImage(
-                  fit: BoxFit.cover,
-                  placeholder: AssetImage(
-                    'assets/loading.gif',
-                  ),
-                  image: NetworkImage(
-                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxtxRFT5w2sR6PWJ5Y4ZQXN70y8G-4zAXIPrziU-ERm2OIvJy1Sphhc0SpBuDkJ5DgoMs&usqp=CAU')),
-            ),
+      child: Stack(children: [
+        SizedBox(
+          width: double.infinity,
+          height: double.infinity,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(23),
+            child: FadeInImage(
+                fit: BoxFit.cover,
+                placeholder: AssetImage(
+                  'assets/loading.gif',
+                ),
+                image: NetworkImage(
+                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxtxRFT5w2sR6PWJ5Y4ZQXN70y8G-4zAXIPrziU-ERm2OIvJy1Sphhc0SpBuDkJ5DgoMs&usqp=CAU')),
           ),
-          Container(
-            margin: const EdgeInsets.all(10),
-            alignment: Alignment.bottomLeft,
-            width: 220,
-            height: double.infinity,
-            child: Text(
-              promo.textImage,
-              style: const TextStyle(
-                  fontSize: 20,
-                  color: Colors.purple,
-                  fontWeight: FontWeight.w500),
-            ),
-          )
-        ]),
-      ),
+        ),
+        Container(
+          margin: const EdgeInsets.all(10),
+          alignment: Alignment.bottomLeft,
+          width: 220,
+          height: double.infinity,
+          child: Text(
+            promo.textImage,
+            style: const TextStyle(
+                fontSize: 20,
+                color: Colors.purple,
+                fontWeight: FontWeight.w500),
+          ),
+        )
+      ]),
     );
   }
 }

@@ -66,7 +66,6 @@ class _StructureSlideShow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     double sizeH = MediaQuery.of(context).size.height;
 
     return Container(
@@ -131,13 +130,31 @@ class _SlidesState extends State<_Slides> {
     return Column(
       children: [
         Expanded(
-          child: PageView(
-            physics: const BouncingScrollPhysics(),
-            controller: controller,
-            scrollDirection: Axis.horizontal,
-            children: widget.slides.map((e) => _Slide(slide: e)).toList(),
+          child: Container(
+            margin: const EdgeInsets.all(20),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.grey.withOpacity(0.2),
+                      spreadRadius: 5,
+                      blurRadius: 7,
+                      offset: const Offset(0, 3))
+                ]),
+            child: PageView(
+              physics: const BouncingScrollPhysics(),
+              controller: controller,
+              scrollDirection: Axis.horizontal,
+              children: widget.slides.map((e) => _Slide(slide: e)).toList(),
+            ),
           ),
         ),
+
+        /// Condicio que permite verificar si ya ha llegado al final del pageview,
+        /// una vez llega al final cambia el boton naranja con un boton de comenzar
+        /// en caso de oprimir el boton de omitir envia a la vista de opciones de inicio
+        /// de sesión.
         Padding(
           padding: const EdgeInsets.only(left: 30, right: 20),
           child: (current <= 1.7)

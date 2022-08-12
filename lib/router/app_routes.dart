@@ -11,6 +11,11 @@ class AppRoutes {
     'login': (BuildContext context) => const LoginScreen(),
     'register': (BuildContext context) => const RegisterScreen(),
     'home': (BuildContext context) => const HomeScreen(),
+    'inteligencia': (BuildContext context) =>
+        const InteligenciaEmocinalScreen(),
+    'charlaa': (BuildContext context) => const CharlasScreen(),
+    'emi': (BuildContext context) => const HablaConEmiScreen(),
+    'ParaTi': (BuildContext context) => const ParaTiScreen(),
   };
 
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {

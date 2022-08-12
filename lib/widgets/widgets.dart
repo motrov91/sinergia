@@ -1,3 +1,5 @@
+export 'package:sinergia_app/widgets/options_menu_inteligencia.dart';
+export 'package:sinergia_app/widgets/custom_progress_bar.dart';
 export 'package:sinergia_app/widgets/carrousel.dart';
 export 'package:sinergia_app/widgets/page_home.dart';
 export 'package:sinergia_app/widgets/bubbles.dart';

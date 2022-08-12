@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+///Este widget se debe usar dentro de un stack
 class Bubbles extends StatelessWidget {
   final double? rightB;
   final double? topB;
