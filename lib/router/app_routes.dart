@@ -4,7 +4,7 @@ import '../screens/screens.dart';
 
 class AppRoutes {
   //Un metodo o propiedad estatica que se puede acceder sin necesidad de instanciar la clase, es decir ponerlo de manera global
-  static const initialRoute = 'introduction';
+  static const initialRoute = 'inteligencia';
 
   static Map<String, Widget Function(BuildContext)> routes = {
     'introduction': (BuildContext context) => const IntroductionScreen(),
@@ -16,6 +16,12 @@ class AppRoutes {
     'charlaa': (BuildContext context) => const CharlasScreen(),
     'emi': (BuildContext context) => const HablaConEmiScreen(),
     'ParaTi': (BuildContext context) => const ParaTiScreen(),
+    'blogIra': (BuildContext context) => const BlogManejoIraScreen(),
+    'blogMiedo': (BuildContext context) => const BlogManejoMiedoScreen(),
+    'blogRetos': (BuildContext context) => const BlogRetosScreen(),
+    'blogInteligencia': (BuildContext context) =>
+        const BlogInteligenciaEmocionalScreen(),
+    'item_blog': (BuildContext context) => const ItemBlogScreen(),
   };
 
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {

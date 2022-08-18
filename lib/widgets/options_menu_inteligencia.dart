@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sinergia_app/screens/screens.dart';
 
 class OptionsMenuInteligencia extends StatelessWidget {
   const OptionsMenuInteligencia({Key? key}) : super(key: key);
@@ -27,7 +28,11 @@ class OptionsMenuInteligencia extends StatelessWidget {
                         colorOne: const Color(0xffB3B5EB),
                         colorTwo: const Color(0xff7D88F3),
                         colorThree: const Color(0xff6F6DF4),
-                        tap: () {}),
+                        tap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const BlogManejoIraScreen()))),
                     _ButtonBox(
                       textBox: "INTELIGENCIA EMOCIONAL",
                       imageBox: 'assets/emogi_inteligencia.png',
@@ -35,7 +40,11 @@ class OptionsMenuInteligencia extends StatelessWidget {
                       colorOne: const Color(0xff7BEAD8),
                       colorTwo: const Color(0xff3FCCB6),
                       colorThree: const Color(0xff38BCA8),
-                      tap: () {},
+                      tap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const BlogInteligenciaEmocionalScreen())),
                     ),
                   ],
                 ),
@@ -54,7 +63,11 @@ class OptionsMenuInteligencia extends StatelessWidget {
                       colorOne: const Color(0xffFDBCCF),
                       colorTwo: const Color(0xffFC84A7),
                       colorThree: const Color(0xffED6693),
-                      tap: () {},
+                      tap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const BlogManejoMiedoScreen())),
                     ),
                     _ButtonBox(
                       textBox: "RETOS",
@@ -63,7 +76,10 @@ class OptionsMenuInteligencia extends StatelessWidget {
                       colorOne: const Color(0xffEBB3B3),
                       colorTwo: const Color(0xffF37D7D),
                       colorThree: const Color(0xffF46D6D),
-                      tap: () {},
+                      tap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const BlogRetosScreen())),
                     ),
                   ],
                 ),

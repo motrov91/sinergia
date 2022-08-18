@@ -1,3 +1,6 @@
+export 'package:sinergia_app/widgets/suggestions.dart';
+export 'package:sinergia_app/widgets/custom_icon_item_blog.dart';
+export 'package:sinergia_app/widgets/blog_structure.dart';
 export 'package:sinergia_app/widgets/options_menu_inteligencia.dart';
 export 'package:sinergia_app/widgets/custom_progress_bar.dart';
 export 'package:sinergia_app/widgets/carrousel.dart';
